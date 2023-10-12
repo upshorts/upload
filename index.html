@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>TikTok Clone</title>
+    <title>TikTok-like UI</title>
 </head>
 <body>
-    <div class="tiktok-container">
-        <div class="video-container">
-            <video controls>
-                <source src="your_video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="user-info">
-            <img src="profile_picture.jpg" alt="User Profile">
-            <h3>Username</h3>
-        </div>
-        <div class="actions">
+    <div class="video-card">
+        <video controls class="video">
+            <source src="111.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="taskbar">
+            <div class="user-info">
+                <img src="upload.png" alt="User Profile">
+            </div>
             <button class="heart-button">❤️</button>
-            <button class="comment-button">💬</button>
-            <button class="share-button">👁️</button>
+            <input type="file" id="videoInput" accept="video/*" style="display: none"> <!-- Add the accept attribute for video files -->
+            <button class="upload-button">
+                <img src="upload.png" alt="Upload Video">
+            </button>
+            <button class="views-button">👁️</button>
         </div>
         <div class="caption">
-            <p>This .</p>
+            <p>This is a TikTok-like video card.</p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
