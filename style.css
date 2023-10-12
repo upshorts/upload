@@ -1,29 +1,63 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-h1 {
-    color: #333;
-}
-
-form {
-    margin: 20px;
-}
-
-h2 {
-    margin-top: 20px;
-    color: #333;
-}
-
-.image-gallery {
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
 }
 
-.image-gallery img {
-    max-width: 300px;
-    max-height: 300px;
-    margin: 10px;
+.tiktok-container {
+    width: 320px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.actions button {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.caption {
+    padding: 10px;
+    border-top: 1px solid #e1e1e1;
+}
+
+.caption p {
+    margin: 0;
+    font-size: 14px;
 }

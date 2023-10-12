@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Upload</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>TikTok Clone</title>
 </head>
 <body>
-    <h1>Image Upload</h1>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" id="image" accept="image/*">
-        <input type="submit" value="Upload Image" name="submit">
-    </form>
-    <h2>Uploaded Images</h2>
-    <div class="image-gallery">
-        <?php include 'display.php'; ?>
+    <div class="tiktok-container">
+        <div class="video-container">
+            <video controls>
+                <source src="your_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="user-info">
+            <img src="profile_picture.jpg" alt="User Profile">
+            <h3>Username</h3>
+        </div>
+        <div class="actions">
+            <button class="heart-button">❤️</button>
+            <button class="comment-button">💬</button>
+            <button class="share-button">👁️</button>
+        </div>
+        <div class="caption">
+            <p>This is a TikTok clone.</p>
+        </div>
     </div>
 </body>
 </html>
