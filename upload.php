@@ -1,45 +1,35 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["video"])) {
-    $uploadDirectory = "uploadvid/";
-    if (!file_exists($uploadDirectory)) {
-        mkdir($uploadDirectory, 0777, true);
-    }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_FILES["image"])) {
+        $uploadDir = "uploads/";
+        $title = $_POST["title"];
 
-    $videoName = $_FILES["video"]["name"];
-    $videoPath = $uploadDirectory . $videoName;
+        // Get the file extension from the uploaded file
+        $fileExtension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
-    // Check the video duration
-    $ffmpegPath = '/path/to/ffmpeg';  // Replace with the actual path to the ffmpeg binary
-    $command = "$ffmpegPath -i $videoPath 2>&1 | grep 'Duration'";
-    exec($command, $output);
-    
-    if (count($output) > 0) {
-        $durationString = $output[0];
-        $durationArray = explode(" ", $durationString);
-        $duration = trim($durationArray[1], ",");
-        $durationInSeconds = timeToSeconds($duration);
+        // Generate a unique filename based on the provided title and the current timestamp
+        $newFilename = $title . '_' . time() . '.' . $fileExtension;
 
-        // Allow videos within 5 seconds of 30 seconds
-        if (abs($durationInSeconds - 30) <= 5) {
-            if (move_uploaded_file($_FILES["video"]["tmp_name"], $videoPath)) {
-                echo "Video uploaded successfully!";
-            } else {
-                echo "Error uploading the video.";
-            }
+        $uploadFile = $uploadDir . $newFilename;
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $uploadFile)) {
+            // On successful upload, echo a success message and the success GIF
+         
+            echo '<img src="success.gif" alt="Success">';
         } else {
-            echo "Video duration must be approximately 30 seconds.";
+            // On unsuccessful upload, echo an error message and the error GIF
+            echo "Error uploading image.";
+            echo '<img src="error.gif" alt="Error">';
         }
-    } else {
-        echo "Error checking the video duration.";
     }
 }
-
-function timeToSeconds($time) {
-    list($hours, $minutes, $seconds) = explode(':', $time);
-    return $hours * 3600 + $minutes * 60 + $seconds;
-}
-
-$videoFiles = glob("uploadvid/*.{mp4,webm}", GLOB_BRACE);
 ?>
 
-<!-- ... rest of the HTML ... -->
+
+
+
+
+
+
+
+
